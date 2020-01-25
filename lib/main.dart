@@ -7,12 +7,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+      debugShowCheckedModeBanner: true,
+      title: 'Cálculo de Calagem',
+      theme: ThemeData(),
       home: Home(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
