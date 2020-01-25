@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liming_calculation/screens/home.widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,21 +11,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: HomePage(),
+      home: Home(),
       debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Cálculo de Calagem",
-        ),
-      ),
     );
   }
 }
