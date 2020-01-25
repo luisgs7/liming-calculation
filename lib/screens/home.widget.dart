@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liming_calculation/tabs/home.tab.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -31,7 +32,7 @@ class Home extends StatelessWidget {
           ),
           body: TabBarView(
             children: <Widget>[
-              Icon(Icons.directions_car),
+              HomeTab(),
               Icon(Icons.directions_transit),
               Icon(Icons.directions_bike),
             ],
