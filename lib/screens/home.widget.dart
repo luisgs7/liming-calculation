@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liming_calculation/tabs/calculate.tab.dart';
 import 'package:liming_calculation/tabs/home.tab.dart';
 
 class Home extends StatelessWidget {
@@ -9,7 +10,7 @@ class Home extends StatelessWidget {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.green,
+            backgroundColor: Color(0xFF1D5D51),
             bottom: TabBar(
               tabs: <Widget>[
                 Tab(
@@ -33,7 +34,7 @@ class Home extends StatelessWidget {
           body: TabBarView(
             children: <Widget>[
               HomeTab(),
-              Icon(Icons.directions_transit),
+              calculate(),
               Icon(Icons.directions_bike),
             ],
           ),
