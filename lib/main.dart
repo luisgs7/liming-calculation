@@ -9,7 +9,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Cálculo de Calagem',
-      theme: ThemeData(),
+      theme: ThemeData(
+        primaryColor: Color(0xFF1D5D51),
+      ),
       home: Home(),
     );
   }

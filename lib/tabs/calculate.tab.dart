@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
-class calculate extends StatelessWidget {
+class Calculate extends StatelessWidget {
   final caController = TextEditingController();
   final mgController = TextEditingController();
   final hAlController = TextEditingController();
@@ -84,7 +82,6 @@ class calculate extends StatelessWidget {
               Divider(indent: 170.0),
             ],
           ),
-          Divider(),
           Padding(
             padding: EdgeInsets.only(right: 50.0, left: 50.0, bottom: 30.0),
             child: FlatButton(
@@ -93,7 +90,7 @@ class calculate extends StatelessWidget {
                 "Calcular",
                 style: TextStyle(color: Colors.white, fontSize: 17.0),
               ),
-              color: Colors.green,
+              color: Color(0xFF1D5D51),
             ),
           )
         ],
@@ -116,49 +113,3 @@ Widget buildTextFormField(String prefix, TextEditingController textEC) {
     ),
   );
 }
-
-/*
-validator: (String value) {
-    return value.contains('@') ? 'Do not use the @ char.' : null;
-  },
-
-
-            child: buildTextFormField("Ca", caController),
-            
-            child: buildTextFormField("Mg", mgController),  
-            Divider(),
-            buildTextFormField("H+AL", hAlController),           
-            Divider(),
-            buildTextFormField("K", kController),
-            Divider(),
-            buildTextFormField("Na", naController),
-            Divider(),
-            buildTextFormField("V2", v2Controller),
-            Divider(),
-            buildTextFormField("PRNT", prntController),
-            Divider(),
-            buildTextFormField("R\$/Ton", r$TonController),
-            Divider(),
-            buildTextFormField("Quantidade de ha", qtdHaController),
-
-TextField(
-              controller: hAlController,
-              decoration: InputDecoration(
-                labelText: 'Ca',
-              ),
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 22.0,
-              ),
-            ),
-            TextField(
-              controller: hAlController,
-              decoration: InputDecoration(
-                labelText: 'Ca',
-              ),
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 22.0,
-              ),
-            ),
-*/
