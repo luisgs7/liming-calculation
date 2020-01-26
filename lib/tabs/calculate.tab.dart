@@ -17,15 +17,117 @@ class calculate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30, 15, 70, 20),
-        child: ListView(
-          children: <Widget>[
-            buildTextFormField("Ca", caController),
+      body: ListView(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Expanded(
+                child: buildTextFormField("Ca", caController),
+              ),
+              Divider(
+                indent: 20.0,
+              ),
+              Expanded(
+                child: buildTextFormField("Mg", mgController),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Expanded(
+                child: buildTextFormField("H+AL", hAlController),
+              ),
+              Divider(
+                indent: 20.0,
+              ),
+              Expanded(
+                child: buildTextFormField("K", kController),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Expanded(
+                child: buildTextFormField("Na", naController),
+              ),
+              Divider(
+                indent: 20.0,
+              ),
+              Expanded(
+                child: buildTextFormField("V2", v2Controller),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Expanded(
+                child: buildTextFormField("PRNT", prntController),
+              ),
+              Divider(
+                indent: 20.0,
+              ),
+              Expanded(
+                child: buildTextFormField("R\$/Ton", r$TonController),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Expanded(
+                child: buildTextFormField("Quantidade de Ha", qtdHaController),
+              ),
+              Divider(indent: 170.0),
+            ],
+          ),
+          Divider(),
+          Padding(
+            padding: EdgeInsets.only(right: 50.0, left: 50.0, bottom: 30.0),
+            child: FlatButton(
+              onPressed: () {},
+              child: Text(
+                "Calcular",
+                style: TextStyle(color: Colors.white, fontSize: 17.0),
+              ),
+              color: Colors.green,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+Widget buildTextFormField(String prefix, TextEditingController textEC) {
+  return Padding(
+    padding: EdgeInsets.all(10),
+    child: TextFormField(
+      controller: textEC,
+      decoration: InputDecoration(labelText: prefix),
+      keyboardType: TextInputType.numberWithOptions(decimal: true),
+      style: TextStyle(fontSize: 17.0),
+      validator: (String value) {
+        return value.contains("") ? 'Campo obrigatório' : null;
+      },
+    ),
+  );
+}
+
+/*
+validator: (String value) {
+    return value.contains('@') ? 'Do not use the @ char.' : null;
+  },
+
+
+            child: buildTextFormField("Ca", caController),
+            
+            child: buildTextFormField("Mg", mgController),  
             Divider(),
-            buildTextFormField("Mg", mgController),
-            Divider(),
-            buildTextFormField("H+AL", hAlController),
+            buildTextFormField("H+AL", hAlController),           
             Divider(),
             buildTextFormField("K", kController),
             Divider(),
@@ -38,23 +140,6 @@ class calculate extends StatelessWidget {
             buildTextFormField("R\$/Ton", r$TonController),
             Divider(),
             buildTextFormField("Quantidade de ha", qtdHaController),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-Widget buildTextFormField(String prefix, TextEditingController textEC) {
-  return TextFormField(
-    controller: textEC,
-    decoration: InputDecoration(labelText: prefix),
-    keyboardType: TextInputType.numberWithOptions(decimal: true),
-    style: TextStyle(fontSize: 18.0),
-  );
-}
-
-/*
 
 TextField(
               controller: hAlController,
