@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
 class Calculation {
-  var caController = new TextEditingController();
-  var mgController = new TextEditingController();
-  var hAlController = new TextEditingController();
-  var kController = new TextEditingController();
-  var naController = new TextEditingController();
-  var v2Controller = new TextEditingController();
-  var prntController = new TextEditingController();
-  var r$TonController = new TextEditingController();
-  var qtdHaController = new TextEditingController();
-  String result = "Ola";
+  var caController = TextEditingController();
+  var mgController = TextEditingController();
+  var hAlController = TextEditingController();
+  var kController = TextEditingController();
+  var naController = TextEditingController();
+  var v2Controller = TextEditingController();
+  var prntController = TextEditingController();
+  var r$TonController = TextEditingController();
+  var qtdHaController = TextEditingController();
+  String result = 'Preencha todos os Campos';
 
-  Calculate() {
+  String calcular() {
     double ca = double.parse(caController.text);
     double mg = double.parse(mgController.text);
     double hAl = double.parse(hAlController.text);
@@ -35,13 +35,15 @@ class Calculation {
 
     t = (hAl + sb);
 
+    v1 = (sb / t) * 100;
+
     nc = t * (v2 - v1) / prnt;
 
     iHa = nc * r$T;
 
     iTotal = iHa * qtdH;
 
-    result = "Colinas";
-    //  "NC/ha: ${nc.toStringAsPrecision(2)} Ton/ha /n R\$ ${iHa.toStringAsPrecision(2)} /n R\$/Total ${iTotal.toStringAsPrecision(2)}";
+    result =
+        "Nc/ton: ${nc.toStringAsPrecision(4)} \n Invest. Ha: R\$ ${iHa.toStringAsPrecision(5)} \n Invest. Total: R\$ ${iTotal.toStringAsPrecision(6)}";
   }
 }

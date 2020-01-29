@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liming_calculation/blocs/calculation.bloc.dart';
 
 class Calculate extends StatefulWidget {
   @override
@@ -6,73 +7,7 @@ class Calculate extends StatefulWidget {
 }
 
 class _CalculateState extends State<Calculate> {
-  var caController = TextEditingController();
-  var mgController = TextEditingController();
-  var hAlController = TextEditingController();
-  var kController = TextEditingController();
-  var naController = TextEditingController();
-  var v2Controller = TextEditingController();
-  var prntController = TextEditingController();
-  var r$TonController = TextEditingController();
-  var qtdHaController = TextEditingController();
-  String result = 'Colinas';
-
-  String _calcular() {
-    setState(() {
-      double ca = double.parse(caController.text);
-      double mg = double.parse(mgController.text);
-      double hAl = double.parse(hAlController.text);
-      double k = double.parse(kController.text);
-      double na = double.parse(naController.text);
-      double v2 = double.parse(v2Controller.text);
-      double prnt = double.parse(prntController.text);
-      double r$T = double.parse(r$TonController.text);
-      double qtdH = double.parse(qtdHaController.text);
-
-      double sb = 0;
-      double t = 0;
-      double v1 = 0;
-
-      double nc = 0;
-      double iHa = 0;
-      double iTotal = 0;
-
-      sb = ca + mg + na + k;
-
-      t = (hAl + sb);
-
-      v1 = (sb / t) * 100;
-
-      nc = t * (v2 - v1) / prnt;
-
-      iHa = nc * r$T;
-
-      iTotal = iHa * qtdH;
-
-/*       result = "Araguaina";   */
-      //  "NC/ha: ${nc.toStringAsPrecision(2)} Ton/ha /n R\$ ${iHa.toStringAsPrecision(2)} /n R\$/Total ${iTotal.toStringAsPrecision(2)}";
-
-      ca += mg +
-          hAl +
-          k +
-          na +
-          v2 +
-          prnt +
-          r$T +
-          qtdH +
-          sb +
-          t +
-          v1 +
-          nc +
-          iHa +
-          iTotal +
-          sb;
-
-      result =
-          "Nc/ton: ${nc.toStringAsPrecision(4)} \n Invest. Ha: R\$ ${iHa.toStringAsPrecision(5)} \n Invest. Total: R\$ ${iTotal.toStringAsPrecision(6)}";
-    });
-  }
-
+  Calculation bloc = new Calculation();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,13 +18,13 @@ class _CalculateState extends State<Calculate> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Expanded(
-                child: buildTextFormField("Ca", caController),
+                child: buildTextFormField("Ca", bloc.caController),
               ),
               Divider(
                 indent: 20.0,
               ),
               Expanded(
-                child: buildTextFormField("Mg", mgController),
+                child: buildTextFormField("Mg", bloc.mgController),
               ),
             ],
           ),
@@ -97,13 +32,13 @@ class _CalculateState extends State<Calculate> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Expanded(
-                child: buildTextFormField("H+AL", hAlController),
+                child: buildTextFormField("H+AL", bloc.hAlController),
               ),
               Divider(
                 indent: 20.0,
               ),
               Expanded(
-                child: buildTextFormField("K", kController),
+                child: buildTextFormField("K", bloc.kController),
               ),
             ],
           ),
@@ -111,13 +46,13 @@ class _CalculateState extends State<Calculate> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Expanded(
-                child: buildTextFormField("Na", naController),
+                child: buildTextFormField("Na", bloc.naController),
               ),
               Divider(
                 indent: 20.0,
               ),
               Expanded(
-                child: buildTextFormField("V2", v2Controller),
+                child: buildTextFormField("V2", bloc.v2Controller),
               ),
             ],
           ),
@@ -125,13 +60,13 @@ class _CalculateState extends State<Calculate> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Expanded(
-                child: buildTextFormField("PRNT", prntController),
+                child: buildTextFormField("PRNT", bloc.prntController),
               ),
               Divider(
                 indent: 20.0,
               ),
               Expanded(
-                child: buildTextFormField("R\$/Ton", r$TonController),
+                child: buildTextFormField("R\$/Ton", bloc.r$TonController),
               ),
             ],
           ),
@@ -139,7 +74,8 @@ class _CalculateState extends State<Calculate> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Expanded(
-                child: buildTextFormField("Quantidade de Ha", qtdHaController),
+                child: buildTextFormField(
+                    "Quantidade de Ha", bloc.qtdHaController),
               ),
               Divider(indent: 170.0),
             ],
@@ -147,7 +83,7 @@ class _CalculateState extends State<Calculate> {
           Padding(
             padding: EdgeInsets.all(20),
             child: Text(
-              result,
+              bloc.result,
               textAlign: TextAlign.center,
             ),
           ),
@@ -156,7 +92,7 @@ class _CalculateState extends State<Calculate> {
             child: FlatButton(
               onPressed: () {
                 setState(() {
-                  _calcular();
+                  bloc.calcular();
                 });
               },
               child: Text(
@@ -180,22 +116,6 @@ Widget buildTextFormField(String prefix, TextEditingController textEC) {
       decoration: InputDecoration(labelText: prefix),
       keyboardType: TextInputType.numberWithOptions(decimal: true),
       style: TextStyle(fontSize: 17.0),
-      validator: (String value) {
-        return value.contains("") ? 'Campo obrigatório' : null;
-      },
     ),
   );
 }
-/*
-  var caController = new TextEditingController();
-  var mgController = new TextEditingController();
-  var hAlController = new TextEditingController();
-  var kController = new TextEditingController();
-  var naController = new TextEditingController();
-  var v2Controller = new TextEditingController();
-  var prntController = new TextEditingController();
-  var r$TonController = new TextEditingController();
-  var qtdHaController = new TextEditingController();
-  String result = "Ola"; 
-
-  */
