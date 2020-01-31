@@ -23,6 +23,7 @@ class Calculation {
     double r$T = double.parse(r$TonController.text);
     double qtdH = double.parse(qtdHaController.text);
 
+    result = "ola";
     double sb;
     double t;
     double v1;

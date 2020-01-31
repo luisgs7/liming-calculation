@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:liming_calculation/tabs/about.tab.dart';
 import 'package:liming_calculation/tabs/calculate.tab.dart';
 import 'package:liming_calculation/tabs/formulas.tab.dart';
-import 'package:liming_calculation/tabs/home.tab.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -16,13 +16,34 @@ class Home extends StatelessWidget {
             bottom: TabBar(
               tabs: <Widget>[
                 Tab(
-                  icon: Icon(Icons.home),
+                  child: Text(
+                    "Sobre",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Tab(
-                  icon: Icon(Icons.exposure),
+                  child: Text(
+                    "Cálculo",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 Tab(
-                  icon: Icon(Icons.note),
+                  child: Text(
+                    "Fórmulas",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
             ),
@@ -35,7 +56,7 @@ class Home extends StatelessWidget {
           ),
           body: TabBarView(
             children: <Widget>[
-              HomeTab(),
+              AboutTab(),
               Calculate(),
               Formulas(),
             ],
