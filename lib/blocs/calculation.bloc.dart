@@ -12,7 +12,7 @@ class Calculation {
   var qtdHaController = TextEditingController();
   String result = 'Preencha todos os Campos';
 
-  String calcular() {
+  String calculate() {
     double ca = double.parse(caController.text);
     double mg = double.parse(mgController.text);
     double hAl = double.parse(hAlController.text);
@@ -45,6 +45,18 @@ class Calculation {
     iTotal = iHa * qtdH;
 
     result =
-        "Nc/ton: ${nc.toStringAsPrecision(4)} \n Invest. Ha: R\$ ${iHa.toStringAsPrecision(5)} \n Invest. Total: R\$ ${iTotal.toStringAsPrecision(6)}";
+        "Nc/ha: ${nc.toStringAsPrecision(4)} \n Invest. Ha: R\$ ${iHa.toStringAsPrecision(5)} \n Invest. Total: R\$ ${iTotal.toStringAsPrecision(6)}";
+  }
+
+  void reset() {
+    caController.clear();
+    mgController.clear();
+    hAlController.clear();
+    kController.clear();
+    naController.clear();
+    prntController.clear();
+    v2Controller.clear();
+    r$TonController.clear();
+    qtdHaController.clear();
   }
 }

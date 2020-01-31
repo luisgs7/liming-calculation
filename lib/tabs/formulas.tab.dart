@@ -27,7 +27,7 @@ class Formulas extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               Text(
-                "T = (H+Al) + SB\nH+ Al (Hidrogênio mais Alumínio)",
+                "T = (H+Al) + SB\nH+ Al (Hidrogênio mais Alumínio)\n",
                 style: TextStyle(fontSize: 19.0),
                 textAlign: TextAlign.justify,
               ),
